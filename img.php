@@ -1,14 +1,11 @@
 <?php
 class imagen {
-var $nombre;
-   public function __construct($nombre){
-       $this->ancho = 600;
-       $this->altmax = 400;
-       $this->nombre = $nombre;
+
+   public function __construct(){
+          if(isset($_GET["x"])){ $this->ancho = $_GET["x"]; }else{ $this->ancho = 600; }
+          if(isset($_GET["y"])){ $this->altmax = $_GET["y"]; }else{ $this->altmax = 400; }
+          if(isset($_GET["n"])){ $this->nombre = $_GET["n"]; }else{ $this->nombre = "imagen.jpg"; }
    }
-   
-   
-   
    
    public function imageJpg(){
           $datos = getimagesize($this->nombre);
@@ -31,13 +28,8 @@ imagedestroy($thumb);
 
 }
 
-
-
-
-
  
 }
-//$imagen = new imagen("sinextension");
-$imagen = new imagen("imagen.jpg");
+$imagen = new imagen();
 $imagen -> imageJpg();
 ?>
