@@ -18,9 +18,9 @@ var $nombre;
              $this->altmax = ($datos[1] / $ratio);
 
              if($this->altmax>$this->altmax){
-                $anchura2=$this->altmax*$this->ancho/$this->altmax;
+                $ancho=$this->altmax*$this->ancho/$this->altmax;
                 $this->altmax=$this->altmax;
-                $this->ancho=$anchura2;
+                $this->ancho=$ancho;
              }
 
 $thumb = imagecreatetruecolor($this->ancho,$this->altmax);
