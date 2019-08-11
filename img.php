@@ -5,6 +5,7 @@ class imagen {
           if(isset($_GET["x"])){ $this->ancho = $_GET["x"]; }else{ $this->ancho = 600; }
           if(isset($_GET["y"])){ $this->altmax = $_GET["y"]; }else{ $this->altmax = 400; }
           if(isset($_GET["n"])){ $this->nombre = $_GET["n"]; }else{ $this->nombre = "imagen.jpg"; }
+          if(!is_file($this->nombre)){ $this->nombre = "default.jpg"; }
    }
    
    public function imageJpg(){
@@ -25,7 +26,6 @@ imagecopyresampled($thumb, $img, 0, 0, 0, 0, $this->ancho, $this->altmax, $datos
 header("Content-type: image/jpeg");
 imagejpeg($thumb);
 imagedestroy($thumb);
-
 }
 
  
