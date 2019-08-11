@@ -1,39 +1,43 @@
 <?php
+class imagen {
+var $nombre;
+   public function __construct($nombre){
+       $this->ancho = 600;
+       $this->altmax = 400;
+       $this->nombre = $nombre;
+   }
+   
+   
+   
+   
+   public function imageJpg(){
+          $datos = getimagesize($this->nombre);
 
-/*
-$anchura = $_GET["ancho"];
-$hmax = $_GET["alto"];
-$nombre = $_GET['imagen'];
-*/
+          if($datos[2]==2){ $img = @imagecreatefromjpeg($this->nombre); }
+             $ratio = ($datos[0] / $this->ancho);
+             $this->altmax = ($datos[1] / $ratio);
 
-$anchura = 600;
-$hmax = 400;
-$nombre = "n91492ll45n";  //$nombre = "imagen";
+             if($this->altmax>$this->altmax){
+                $anchura2=$this->altmax*$this->ancho/$this->altmax;
+                $this->altmax=$this->altmax;
+                $this->ancho=$anchura2;
+             }
 
-$datos = getimagesize($nombre);
-
-if($datos[2]==2){
-$img = @imagecreatefromjpeg($nombre);
-}
-$ratio = ($datos[0] / $anchura);
-$altura = ($datos[1] / $ratio);
-
-if($altura>$hmax){
-$anchura2=$hmax*$anchura/$altura;
-$altura=$hmax;
-$anchura=$anchura2;
-}
-
-$thumb = imagecreatetruecolor($anchura,$altura);
-imagecopyresampled($thumb, $img, 0, 0, 0, 0, $anchura, $altura, $datos[0], $datos[1]);
-
+$thumb = imagecreatetruecolor($this->ancho,$this->altmax);
+imagecopyresampled($thumb, $img, 0, 0, 0, 0, $this->ancho, $this->altmax, $datos[0], $datos[1]);
 header("Content-type: image/jpeg");
 imagejpeg($thumb);
-
 imagedestroy($thumb);
+
+}
+
+
+
+
+
  
- 
-
-
-
+}
+//$imagen = new imagen("sinextension");
+$imagen = new imagen("imagen.jpg");
+$imagen -> imageJpg();
 ?>
