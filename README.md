@@ -4,5 +4,5 @@ Cargar imagen con o sin extensión en PHP
 En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágenes sin la extension del formato de imagen, y no podrás usar el típico "img src..." de HTML. Para solucionar esto, bastará con hacer una llamada a esta clase, indicando el nombre de la imagen y sus propiedades.
 
 <ul>
-  <li><img src="img.php?nombre=imagen.jpg"></li>
+  <li><code><img src="img.php?nombre=imagen.jpg"></code></li>
 </ul>
