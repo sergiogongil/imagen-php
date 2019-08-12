@@ -1,4 +1,4 @@
-<?php /* https://github.com/sergiogongil/ - MIT License - Copyright (c) 2019 SergioGG */
+<?php /* https://github.com/sergiogongil - MIT License - Copyright (c) 2019 SergioGG */
 class imagen {
 
    public function __construct(){
