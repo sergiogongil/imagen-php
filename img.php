@@ -5,7 +5,7 @@ class imagen {
           if(isset($_GET["x"])){ $this->ancho = $_GET["x"]; }else{ $this->ancho = 600; }
           if(isset($_GET["y"])){ $this->altmax = $_GET["y"]; }else{ $this->altmax = 400; }
           if(isset($_GET["n"])){ $this->nombre = $_GET["n"]; }else{ $this->nombre = ""; }
-          if(!file_exists($this->nombre)){ $this->nombre = "default.jpg"; }
+          if(!file_exists($this->nombre)){ $this->nombre = "data/default.jpg"; }
    }
    
    public function mostrar(){
@@ -17,13 +17,13 @@ class imagen {
                 }elseif($formato == "image/bmp"){   $img = @imagecreatefrombmp($this->nombre);
                 }elseif($formato == "image/jpeg"){  $img = @imagecreatefromjpeg($this->nombre);
                 }else{                              $img = @imagecreatefromjpeg($this->nombre); }
-          
-             $ratio = ($datos[0] / $this->ancho);
-             $this->altmax = ($datos[1] / $ratio);
 
-             if($this->altmax>$this->altmax){
+             $ratio = ($datos[0] / $this->ancho);
+             $altmax = ($datos[1] / $ratio);
+
+             if($altmax>$this->altmax){
                 $ancho=$this->altmax*$this->ancho/$this->altmax;
-                $this->altmax=$this->altmax;
+                $this->altmax=$altmax;
                 $this->ancho=$ancho;
              }
 
@@ -39,7 +39,6 @@ if($formato == "image/jpg"){          imagejpeg($thumb);
 imagedestroy($thumb);
 }
 
- 
 }
 $imagen = new imagen();
 $imagen -> mostrar();
