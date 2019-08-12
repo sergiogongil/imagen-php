@@ -4,7 +4,7 @@ class imagen {
    public function __construct(){
           if(isset($_GET["x"])){ $this->ancho = $_GET["x"]; }else{ $this->ancho = 600; }
           if(isset($_GET["y"])){ $this->altmax = $_GET["y"]; }else{ $this->altmax = 400; }
-          if(isset($_GET["n"])){ $this->nombre = $_GET["n"]; }else{ $this->nombre = "imagen.jpg"; }
+          if(isset($_GET["n"])){ $this->nombre = $_GET["n"]; }else{ $this->nombre = "default.jpg"; }
           if(!is_file($this->nombre)){ $this->nombre = "default.jpg"; }
    }
    
