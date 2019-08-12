@@ -3,8 +3,40 @@
  <TITLE>Imagen-PHP</TITLE>
 </HEAD>
 <BODY>
-  <img src="img.php?n=imagen.jpg">
-  <img src="img.php?n=sinextension&x=400&y=200">
-  <img src="img.php?n=noExiste&x=200&y=100">
+
+  <div style="float:left; width:auto;">
+     <img src="img.php?n=imagen.jpg">
+     <br><i>Imagen con tama&ntilde;o predeterminado.</i>
+  </div>
+  
+  <div style="float:left; width:auto;">
+     <img src="img.php?n=sinextension&x=400&y=200">
+     <br><i>Imagen con tama&ntilde;o establecido.</i>
+  </div>
+  
+  <div style="float:left; width:auto;">
+     <img src="img.php?n=noExiste&x=200&y=100">
+     <br><i>Imagen por defecto.</i>
+  </div>
+  
+  <div style="float:left; width:auto;">
+     <img src="img.php" style="width:100px; height:auto;">
+     <br><i>Sin especificar</i>
+  </div>
+  
+<hr style="width:100%; float:left; margin: 10px 0px 10px 0px;">
+  
+<div style="width:100%; float:left;">
+  <div style="float:left; width:auto;">
+     <img src="img.php?n=otroformato.png&x=300&y=150">
+     <br><i>Imagen png</i>
+  </div>
+  
+  <div style="float:left; width:auto;">
+     <img src="img.php?n=earth.gif&x=200&y=100">
+     <br><i>Imagen gif</i>
+  </div>
+</div>
+
 </BODY>
 </HTML>
