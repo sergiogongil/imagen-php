@@ -10,3 +10,7 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
 Upload image with or without PHP extension
 
 On some occasions, we find applications that manage your images without the extension of the image format, and you will not be able to use the typical "img src ..." of HTML. To solve this, just make a call to this class, indicating the name of the image and its properties.
+
+
+<hr><br>
+Tambien se puede usar para mostrar miniaturas de las imagenes originales.
