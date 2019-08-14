@@ -12,8 +12,10 @@ Upload image with or without PHP extension
 On some occasions, we find applications that manage your images without the extension of the image format, and you will not be able to use the typical "img src ..." of HTML. To solve this, just make a call to this class, indicating the name of the image and its properties.
 
 
-<br><hr><br>Notas sobre usos y modificaciones<br><hr><br>
-También se puede usar para mostrar miniaturas de las imágenes originales.
-He optado por definir un tamaño máximo de imagen.
-Agregar marca de agua a las imágenes.
-Texto en imágenes incrustado.
+<br><hr>Notas sobre usos y modificaciones<hr><br>
+<ul>
+  <li>Mostrar miniaturas de las imágenes originales.</li>
+  <li>He optado por definir un tamaño máximo de imagen.</li>
+  <li>Agregar marca de agua a las imágenes.</li>
+  <li>Texto en imágenes incrustado.</li>
+</ul>
