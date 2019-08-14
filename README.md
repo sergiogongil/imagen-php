@@ -5,7 +5,7 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
 
 <pre>&lt;img src="img.php"&gt;</pre>
 
-<h2>Notas sobre usos y modificaciones</h2>
+<h2>Notas sobre funciones y modificaciones</h2>
 <ul>
   <li>Cargar imágenes sin formato en HTML</li>
   <li>Cargar imágenes de distintos formatos</li>
