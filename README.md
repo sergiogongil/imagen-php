@@ -17,6 +17,7 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
   <li>Auto ajuste de proporciones del tama&ntilde;o</li>
 </ul>
 
+<h2>Ejemplos de uso</h2>
 <p>Podrás aplicar filtros y ajustes a tus imagenes, directamente indicandolo en la url con el paso de variables GET.</p>
 
 <i>Para aplicar una marca de agua:</i>
@@ -28,4 +29,4 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
 <i>Para transformar tu imagen a blanco y negro:</i>
 <pre>&lt;img src="img.php?n=imagen.jpg&b=1"&gt;</pre>
 
-Con esta lógica y de esta forma tan simple, puedes transformar tus imágenes, aplicarles filtros y otras funciones.
+<i>Con esta lógica y de esta forma tan simple, puedes transformar tus imágenes, aplicarles filtros y otras funciones.</i>
