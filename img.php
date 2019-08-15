@@ -29,12 +29,13 @@ class imagen {
          $thumb = imagecreatetruecolor($ancho_final,$alto_final);
          /* Copia y cambia el tamaño de parte de una imagen redimensionándola */
          imagecopyresampled($thumb, $img, 0, 0, 0, 0, $ancho_final, $alto_final, $datos[0], $datos[1]);
-
+if(isset($_GET["nt"])){  /* Filtro de Imagen en negativo */ imagefilter($thumb, IMG_FILTER_NEGATE);}
 if(isset($_GET["b"])){  /* Imagen en Blanco y Negro */ imagefilter($thumb, IMG_FILTER_GRAYSCALE); }
 if(isset($_GET["t"])){  /* Texto en imagen */ $t = strip_tags($_GET["t"]); imagestring($thumb, 3, 40, 20, $t, 0xFFBA00); }
 if(isset($_GET["m"])){  /* Marca de agua */ $estampa = imagecreatefrompng('data/estampa.png');
 /* Copiar parte de una imagen */
 imagecopy($thumb, $estampa, imagesx($thumb) - imagesx($estampa) - 25, imagesy($thumb) - imagesy($estampa) - 25, 0, 0, imagesx($estampa), imagesy($estampa)); }
+
 /* Enviar encabezado */
 header("Content-type: $formato");   /* Exportar la imagen al navegador o a un fichero */
 if($formato == "image/jpg"){          imagejpeg($thumb);
