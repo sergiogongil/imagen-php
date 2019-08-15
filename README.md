@@ -21,12 +21,12 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
 <p>Podrás aplicar filtros y ajustes a tus imágenes, directamente indicándolo en la URL con el paso de variables GET.</p>
 
 <i>Para aplicar una marca de agua:</i>
-<pre>&lt;img src="img.php?n=imagen.jpg&m=1"&gt;</pre>
+<pre>&lt;img src="img.php?n=imagen.jpg&<b>m=1</b>"&gt;</pre>
 
 <i>Para incrustar un texto a tu imagen:</i>
-<pre>&lt;img src="img.php?n=imagen.jpg&t=Hola Mundo!"&gt;</pre>
+<pre>&lt;img src="img.php?n=imagen.jpg&<b>t=Hola Mundo!</b>"&gt;</pre>
 
 <i>Para transformar tu imagen a blanco y negro:</i>
-<pre>&lt;img src="img.php?n=imagen.jpg&b=1"&gt;</pre>
+<pre>&lt;img src="img.php?n=imagen.jpg&<b>b=1</b>"&gt;</pre>
 
 <i>Con esta lógica y de esta forma tan simple, puedes transformar tus imágenes, aplicarles filtros y otras funciones.</i>
