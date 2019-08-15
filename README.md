@@ -13,4 +13,5 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
   <li>Definido tamaño máximo de imagen (por seguridad)</li>
   <li>Aplicar marca de agua a las imágenes</li>
   <li>Texto en imágenes incrustado</li>
+  <li>Transforma tus imágenes a blanco y negro</li>
 </ul>
