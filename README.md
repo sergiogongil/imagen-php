@@ -18,7 +18,7 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
 </ul>
 
 <h2>Ejemplos de uso</h2>
-<p>Podrás aplicar filtros y ajustes a tus imagenes, directamente indicandolo en la url con el paso de variables GET.</p>
+<p>Podrás aplicar filtros y ajustes a tus imágenes, directamente indicándolo en la URL con el paso de variables GET.</p>
 
 <i>Para aplicar una marca de agua:</i>
 <pre>&lt;img src="img.php?n=imagen.jpg&m=1"&gt;</pre>
