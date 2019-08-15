@@ -14,4 +14,5 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
   <li>Aplicar marca de agua a las imágenes</li>
   <li>Texto en imágenes incrustado</li>
   <li>Transforma tus imágenes a blanco y negro</li>
+  <li>Auto ajuste de proporciones del tama&ntilde;o</li>
 </ul>
