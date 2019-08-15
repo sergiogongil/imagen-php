@@ -30,3 +30,5 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
 <pre>&lt;img src="img.php?n=imagen.jpg&<b>b=1</b>"&gt;</pre>
 
 <i>Con esta lógica y de esta forma tan simple, puedes transformar tus imágenes, aplicarles filtros y otras funciones.</i>
+
+<img src="demo.jpg">
