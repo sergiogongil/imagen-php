@@ -33,7 +33,7 @@ class imagen {
          /* Copia y cambia el tamaño de parte de una imagen redimensionándola */
          imagecopyresampled($thumb, $img, 0, 0, 0, 0, $ancho_final, $alto_final, $datos[0], $datos[1]);
          
-         /* Fondo transparente de imagenes PNG */
+         /* Fondo transparente */
          if($formato == "image/png" OR $formato == "image/gif"){ imagefill($thumb, 0, 0, imagecolorallocatealpha($thumb, 255, 255, 255, 127)); /*imagealphablending($thumb, false); imagesavealpha($thumb, true);*/ }
  
          switch ($this->filtro) {
