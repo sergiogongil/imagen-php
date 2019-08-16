@@ -15,6 +15,7 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
   <li>Texto en imágenes incrustado</li>
   <li>Transforma tus imágenes a blanco y negro</li>
   <li>Auto ajuste de proporciones del tama&ntilde;o</li>
+  <li>Aplicar filtros de imagen: Escala de grises, Gaussiano, contraste, brillo, negativo, etc.</li>
 </ul>
 
 <h2>Ejemplos de uso</h2>
@@ -26,8 +27,8 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
 <i>Para incrustar un texto a tu imagen:</i>
 <pre>&lt;img src="img.php?n=imagen.jpg&<b>t=Hola Mundo!</b>"&gt;</pre>
 
-<i>Para transformar tu imagen a blanco y negro:</i>
-<pre>&lt;img src="img.php?n=imagen.jpg&<b>b=1</b>"&gt;</pre>
+<i>Aplicar filtros de imagen:</i>
+<pre>&lt;img src="img.php?n=imagen.jpg&<b>f=1</b>"&gt;</pre>
 
 <i>Con esta lógica y de esta forma tan simple, puedes transformar tus imágenes, aplicarles filtros y otras funciones.</i>
 
