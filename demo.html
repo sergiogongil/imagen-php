@@ -1,8 +1,12 @@
-<HTML>
-<HEAD>
- <TITLE>Imagen-PHP</TITLE>
-</HEAD>
-<BODY>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Imagen-PHP</title>
+    <meta name="title" content="Imagen-PHP">
+    <meta name="description" content="Imagen en PHP. Clase para manipular imagenes de distintos formatos o sin formato, aplicar configuraciones o filtros de imagen.">
+  </head>
+<body>
 
   <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg">
@@ -40,9 +44,19 @@
   
   
   <div style="float:left; width:auto;">
+     <img src="img.php?n=data/imagen.jpg&x=400&y=200&f=2&m=1&t=Parrafo de texto incrustado en imagen">
+     <br><i>Combinados</i>
+  </div>
+  
+  
+  <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg&x=150&y=100">
      <br><i>Imagen en miniatura</i>
   </div>
+  
+
+  
+  
 </div>
 
 
@@ -50,59 +64,70 @@
 
 
 <div style="width:100%; float:left;">
-<hr style="width:100%; float:left; margin: 10px 0px 10px 0px;"><h2>Filtros</h2>
+<hr style="width:100%; float:left; margin: 10px 0px 10px 0px;"><h2 style="color:blue;">FILTROS</h2>
 
   <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg&x=300&y=150&f=1">
+     <br><i>Invierte colores</i>
   </div>
 
   <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg&x=300&y=150&f=2">
+     <br><i>Escala de grises</i>
   </div>
 
   <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg&x=300&y=150&f=3">
+     <br><i>Brillo</i>
   </div>
   
   <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg&x=300&y=150&f=4">
+     <br><i>Contraste</i>
   </div>
 
   <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg&x=300&y=150&f=5">
+     <br><i>Escala color</i>
   </div>
 
   <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg&x=300&y=150&f=6">
+     <br><i>Resaltar bordes</i>
   </div>
 
   <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg&x=300&y=150&f=7">
+     <br><i>Relieve</i>
   </div>
 
   <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg&x=300&y=150&f=8">
+     <br><i>Gaussiano</i>
   </div>
 
   <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg&x=300&y=150&f=9">
+     <br><i>Borrosa</i>
   </div>
 
   <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg&x=300&y=150&f=10">
+     <br><i>Superficial</i>
   </div>
 
   <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg&x=300&y=150&f=11">
+     <br><i>Suaviza</i>
   </div>
 
   <div style="float:left; width:auto;">
      <img src="img.php?n=data/imagen.jpg&x=300&y=150&f=12">
+     <br><i>Pixelación</i>
   </div>
-  
+
+
   
 </div>
-
-
-</BODY>
-</HTML>
+</body>
+</html>
