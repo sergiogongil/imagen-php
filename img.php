@@ -4,6 +4,8 @@ class imagen {
           if(isset($_GET["x"]) AND is_numeric($_GET["x"])){ if($_GET["x"]>1280){ $this->ancho = 1280; }else{ $this->ancho = $_GET["x"]; }}else{ $this->ancho = 600; }
           if(isset($_GET["y"]) AND is_numeric($_GET["y"])){ if($_GET["y"]>1024){ $this->altmax = 1024; }else{ $this->altmax = $_GET["y"]; }}else{ $this->altmax = 400; }
           if(isset($_GET["n"])){ $this->nombre = strip_tags($_GET["n"]); }else{ $this->nombre = ""; }
+          if(isset($_GET["f"]) AND is_numeric($_GET["f"])){ $this->filtro = $_GET["f"]; }else{ $this->filtro = false; }
+
           if(!file_exists($this->nombre)){ $this->nombre = "data/default.jpg"; }
    }
 
@@ -29,8 +31,24 @@ class imagen {
          $thumb = imagecreatetruecolor($ancho_final,$alto_final);
          /* Copia y cambia el tamaño de parte de una imagen redimensionándola */
          imagecopyresampled($thumb, $img, 0, 0, 0, 0, $ancho_final, $alto_final, $datos[0], $datos[1]);
-if(isset($_GET["nt"])){  /* Filtro de Imagen en negativo */ imagefilter($thumb, IMG_FILTER_NEGATE);}
-if(isset($_GET["b"])){  /* Imagen en Blanco y Negro */ imagefilter($thumb, IMG_FILTER_GRAYSCALE); }
+         
+         
+         switch ($this->filtro) {
+              case 1:  imagefilter($thumb, IMG_FILTER_NEGATE);            break; /* Invierte todos los colores de la imagen. */
+              case 2:  imagefilter($thumb, IMG_FILTER_GRAYSCALE);         break; /* Convierte la imagen a escala de grises. */
+              case 3:  imagefilter($thumb, IMG_FILTER_BRIGHTNESS, 80);    break; /* Cambia el brillo de la imagen. Use arg1 para establecer el nivel de brillo. El rango para el brillo es de -255 a 255. */
+              case 4:  imagefilter($thumb, IMG_FILTER_CONTRAST, 40);      break; /* Cambia el contraste de la imagen. Use arg1 para establecer el nivel de contraste. */
+              case 5:  imagefilter($thumb, IMG_FILTER_COLORIZE, 0, 0, 0); break; /* Como IMG_FILTER_GRAYSCALE, excepto que se puede especificar el color. Use arg1, arg2 y arg3 en la forma red, green, blue y arg4 para el canal alpha. El rango de cada color es de 0 a 255. */
+              case 6:  imagefilter($thumb, IMG_FILTER_EDGEDETECT);        break; /* Utiliza detección de borde para resaltar los bordes de la imagen. */
+              case 7:  imagefilter($thumb, IMG_FILTER_EMBOSS);            break; /* Pone en relieve la imagen. */
+              case 8:  imagefilter($thumb, IMG_FILTER_GAUSSIAN_BLUR);     break; /* Pone borrosa la imagen usando el método Gaussiano. */
+              case 9:  imagefilter($thumb, IMG_FILTER_SELECTIVE_BLUR);    break; /* Pone borrosa la imagen. */
+              case 10: imagefilter($thumb, IMG_FILTER_MEAN_REMOVAL);      break; /* Utiliza eliminación media para lograr un efecto "superficial". */
+              case 11: imagefilter($thumb, IMG_FILTER_SMOOTH, 10);        break; /* Suaviza la imagen. Use arg1 para esteblecer el nivel de suavidad. */
+              case 12: imagefilter($thumb, IMG_FILTER_PIXELATE, 10, 1);   break; /* Aplica el efecto de pixelación a la imagen, use arg1 para establecer el tamaño de bloque y arg2 para establecer el modo de efecto de pixelación. */
+              default: break;
+         }
+
 if(isset($_GET["t"])){  /* Texto en imagen */ $t = strip_tags($_GET["t"]); imagestring($thumb, 3, 20, 20, $t, 0xFFBA00); }
 if(isset($_GET["m"])){  /* Marca de agua */ $estampa = imagecreatefrompng('data/estampa.png');
 /* Copiar parte de una imagen */
