@@ -1,19 +1,19 @@
 <?php /* https://github.com/sergiogongil - MIT License - Copyright (c) 2019 SergioGG */
 class imagen {
-   public function __construct(){ $sitioweb = ""; /* <-- AquÌ su sitio Web, ejem: guardianweb.es */
-                                                                    /* Definidos un ancho y alto m·ximos */
+   public function __construct(){ $sitioweb = ""; /* <-- Aqu√≠ su sitio Web, ejem: guardianweb.es o localhost*/
+                                                                    /* Definidos un ancho y alto m√°ximos */
           if(isset($_GET["x"]) AND is_numeric($_GET["x"])){ if($_GET["x"]>1280){ $this->ancho = 1280; }else{ $this->ancho = $_GET["x"]; }}else{ $this->ancho = 600; }
           if(isset($_GET["y"]) AND is_numeric($_GET["y"])){ if($_GET["y"]>1024){ $this->altmax = 1024; }else{ $this->altmax = $_GET["y"]; }}else{ $this->altmax = 400; }
           if(isset($_GET["n"])){ $this->nombre = strip_tags($_GET["n"]); }else{ $this->nombre = ""; }
           if(isset($_GET["f"]) AND is_numeric($_GET["f"])){ $this->filtro = $_GET["f"]; }else{ $this->filtro = false; }
           if(isset($_GET["e"]) AND is_numeric($_GET["e"])){ $this->efecto = $_GET["e"]; }else{ $this->efecto = false; }
-          /* ProtecciÛn Hot-linking */
+          /* Protecci√≥n Hot-linking */
           if(@strpos($sitioweb, $_SERVER['HTTP_HOST']) === false){if($sitioweb==""){}else{$_GET["t"] = "Visite: $sitioweb"; $_GET["m"] = 1; $this->nombre = false;}}
           if(!file_exists($this->nombre)){ $this->nombre = "data/default.jpg"; }
    }
 
    public function mostrar(){
-          $datos = getimagesize($this->nombre);     /* Obtener el tamaÒo de una imagen */
+          $datos = getimagesize($this->nombre);     /* Obtener el tama√±o de una imagen */
           $formato = $datos["mime"];                /* Crea una nueva imagen a partir de un fichero o de una URL */
                 if($formato == "image/jpg"){        $img = imagecreatefromjpeg($this->nombre);
                 }elseif($formato == "image/png"){   $img = imagecreatefrompng($this->nombre);
@@ -33,7 +33,7 @@ class imagen {
          /* Crear una nueva imagen de color verdadero */
          $thumb = imagecreatetruecolor($ancho_final,$alto_final);
          
-         /* Copia y cambia el tamaÒo de parte de una imagen redimension·ndola */
+         /* Copia y cambia el tama√±o de parte de una imagen redimension√°ndola */
          imagecopyresampled($thumb, $img, 0, 0, 0, 0, $ancho_final, $alto_final, $datos[0], $datos[1]);
          
          /* Fondo transparente */
@@ -45,14 +45,14 @@ class imagen {
               case 3:  imagefilter($thumb, IMG_FILTER_BRIGHTNESS, 80);             break; /* Cambia el brillo de la imagen. Use arg1 para establecer el nivel de brillo. El rango para el brillo es de -255 a 255. */
               case 4:  imagefilter($thumb, IMG_FILTER_CONTRAST, 40);               break; /* Cambia el contraste de la imagen. Use arg1 para establecer el nivel de contraste. */
               case 5:  imagefilter($thumb, IMG_FILTER_COLORIZE, 0, 255, 0, 127);   break; /* Como IMG_FILTER_GRAYSCALE, excepto que se puede especificar el color. Use arg1, arg2 y arg3 en la forma red, green, blue y arg4 para el canal alpha. El rango de cada color es de 0 a 255. */
-              case 6:  imagefilter($thumb, IMG_FILTER_EDGEDETECT);                 break; /* Utiliza detecciÛn de borde para resaltar los bordes de la imagen. */
+              case 6:  imagefilter($thumb, IMG_FILTER_EDGEDETECT);                 break; /* Utiliza detecci√≥n de borde para resaltar los bordes de la imagen. */
               case 7:  imagefilter($thumb, IMG_FILTER_EMBOSS);                     break; /* Pone en relieve la imagen. */
-              case 8:  imagefilter($thumb, IMG_FILTER_GAUSSIAN_BLUR);              break; /* Pone borrosa la imagen usando el mÈtodo Gaussiano. */
+              case 8:  imagefilter($thumb, IMG_FILTER_GAUSSIAN_BLUR);              break; /* Pone borrosa la imagen usando el m√©todo Gaussiano. */
               case 9:  imagefilter($thumb, IMG_FILTER_SELECTIVE_BLUR);             break; /* Pone borrosa la imagen. */
-              case 10: imagefilter($thumb, IMG_FILTER_MEAN_REMOVAL);               break; /* Utiliza eliminaciÛn media para lograr un efecto "superficial". */
+              case 10: imagefilter($thumb, IMG_FILTER_MEAN_REMOVAL);               break; /* Utiliza eliminaci√≥n media para lograr un efecto "superficial". */
               case 11: imagefilter($thumb, IMG_FILTER_SMOOTH, 10);                 break; /* Suaviza la imagen. Use arg1 para esteblecer el nivel de suavidad. */
-              case 12: imagefilter($thumb, IMG_FILTER_PIXELATE, 10, 1);            break; /* Aplica el efecto de pixelaciÛn a la imagen, use arg1 para establecer el tamaÒo de bloque y arg2 para establecer el modo de efecto de pixelaciÛn. */
-              //case 13: imagefilter($thumb, IMG_FILTER_SCATTER, 3, 5);              break; /* Aplique un efecto de dispersiÛn muy suave a la imagen. */
+              case 12: imagefilter($thumb, IMG_FILTER_PIXELATE, 10, 1);            break; /* Aplica el efecto de pixelaci√≥n a la imagen, use arg1 para establecer el tama√±o de bloque y arg2 para establecer el modo de efecto de pixelaci√≥n. */
+              //case 13: imagefilter($thumb, IMG_FILTER_SCATTER, 3, 5);              break; /* Aplique un efecto de dispersi√≥n muy suave a la imagen. */
               default: break;
          }
 
