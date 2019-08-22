@@ -1,7 +1,9 @@
 # imagen-php
-Cargar imagen con o sin extensión en PHP
+Cargar imagen con o sin extensión en PHP, aplica filtros y efectos.
 
-En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágenes sin la extension del formato de imagen, y no podrás usar el típico "img src..." de HTML. Para solucionar esto, bastará con hacer una llamada a esta clase, indicando el nombre de la imagen y opcionalmente definir propiedades.
+Esta clase ha sido creada para ahorrarle tiempo en sus proyectos o sitios Web, y poder hacer uso de un codigo optimizado para usar en sus imagenes, pudiendo realizar ajustes, aplicar filtros o efectos, sin necesidad de escribir una sola linea de código. 
+
+En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágenes sin la extensión del formato de imagen, y no podrás usar el típico "img src" de HTML. Para solucionar esto, bastará con hacer una llamada a esta clase, indicando el nombre de la imagen y opcionalmente definir propiedades.
 
 <pre>&lt;img src="img.php"&gt;</pre>
 
