@@ -40,3 +40,8 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
 <i>Con esta lógica y de esta forma tan simple, puedes transformar tus imágenes, aplicarles filtros y otras funciones.</i>
 
 <img src="demo.jpg">
+
+<br><br>
+<a href="https://www.guardianweb.es">guardianweb.es</a>
+<br><br>
+
