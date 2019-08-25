@@ -41,7 +41,3 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
 
 <img src="demo.jpg">
 
-<br><br>
-<a href="https://www.guardianweb.es">guardianweb.es</a>
-<br><br>
-
