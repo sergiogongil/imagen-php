@@ -5,6 +5,10 @@ Esta clase ha sido creada para ahorrarle tiempo en sus proyectos o sitios Web, y
 
 Únicamente necesitará el fichero <code>img.php</code> para usar en sus proyectos, sin enmarañar sus directorios con excesivos ficheros o directorios que nunca usará o serán innecesarios. Simple, fácil y compatible.
 
+Haciendo uso de la bibiioteca GD integrada que viene por defecto en PHP.
+
+Pensado para nuevos desarrolladores o programadores de otros lenguajes, que quieran hacer uso de esta clase, sin profundizar demasiado en el código.
+
 <h2>Notas sobre funciones y modificaciones</h2>
 <ul>
   <li>Cargar imágenes sin formato en HTML</li>
