@@ -1,7 +1,7 @@
 # imagen-php
 Cargar imagen con o sin extensión en PHP, aplica filtros y efectos.
 
-Esta clase ha sido creada para ahorrarle tiempo en sus proyectos o sitios Web, y poder hacer uso de un codigo optimizado para usar en sus imagenes, pudiendo realizar ajustes, aplicar filtros o efectos, sin necesidad de escribir una sola linea de código. 
+Esta clase ha sido creada para ahorrarle tiempo en sus proyectos o sitios Web, y poder hacer uso de un código optimizado para usar en sus imágenes, pudiendo realizar ajustes, aplicar filtros, efectos y otras, sin necesidad de escribir una sola linea de código. 
 
 Únicamente necesitará el fichero <code>img.php</code> para usar en sus proyectos, sin enmarañar sus directorios con excesivos ficheros o directorios que nunca usará o serán innecesarios. Simple, fácil y compatible.
 
