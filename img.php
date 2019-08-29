@@ -3,9 +3,9 @@ class imagen {
    public function __construct(){                                     /* Definidos un ancho y alto máximos */
           if(isset($_GET["x"]) AND is_numeric($_GET["x"])){ if($_GET["x"]>1280){ $this->ancho = 1280; }else{ $this->ancho = $_GET["x"]; }}else{ $this->ancho = 600; }
           if(isset($_GET["y"]) AND is_numeric($_GET["y"])){ if($_GET["y"]>1024){ $this->altmax = 1024; }else{ $this->altmax = $_GET["y"]; }}else{ $this->altmax = 400; }
-          if(isset($_GET["n"])){ $this->nombre = strip_tags($_GET["n"]); }else{ $this->nombre = ""; }
           if(isset($_GET["f"]) AND is_numeric($_GET["f"])){ $this->filtro = $_GET["f"]; }else{ $this->filtro = false; }
           if(isset($_GET["e"]) AND is_numeric($_GET["e"])){ $this->efecto = $_GET["e"]; }else{ $this->efecto = false; }
+          if(isset($_GET["n"])){ $this->nombre = strip_tags($_GET["n"]); }else{ $this->nombre = ""; }
           if(!file_exists($this->nombre)){ if($this->nombre == "icrear"){}else{ $this->nombre = "data/default.jpg"; }}
    }
 
@@ -37,11 +37,12 @@ class imagen {
 
          /* Copia y cambia el tamaño de parte de una imagen redimensionándola */
          imagecopyresampled($thumb, $img, 0, 0, 0, 0, $ancho_final, $alto_final, $datos[0], $datos[1]);
-         }//Fin de inueva.jpg
+         }//Fin de icrear
          
          /* Fondo transparente */                                                                                // 255, 255, 255,
          if($formato == "image/png" OR $formato == "image/gif"){ imagefill($thumb, 0, 0, imagecolorallocatealpha($thumb, 0, 0, 0, 127)); imagealphablending($thumb, false); /**/ imagesavealpha($thumb, true); }
- 
+
+         /* Filtros de imagen */
          switch ($this->filtro) {
               case 1:  imagefilter($thumb, IMG_FILTER_NEGATE);                     break; /* Invierte todos los colores de la imagen. */
               case 2:  imagefilter($thumb, IMG_FILTER_GRAYSCALE);                  break; /* Convierte la imagen a escala de grises. */
@@ -58,7 +59,8 @@ class imagen {
               //case 13: imagefilter($thumb, IMG_FILTER_SCATTER, 3, 5);              break; /* Aplique un efecto de dispersión muy suave a la imagen. */
               default: break;
          }
-
+         
+         /* Efectos de imagen */
          switch ($this->efecto) {
               case 1:  imageflip($thumb, IMG_FLIP_VERTICAL);                       break; /* Voltearla verticalmente */
               case 2:  imageflip($thumb, IMG_FLIP_HORIZONTAL);                     break; /* Voltearla horizontalmente */
@@ -69,9 +71,10 @@ class imagen {
          $textcolor = imagecolorallocate($thumb, 255, 255, 255); //0xFFBA00
          if(isset($_GET["t"])){ $t = strip_tags($_GET["t"]); imagestring($thumb, 5, 20, 20, $t, $textcolor); }
 
-if(isset($_GET["m"])){  /* Marca de agua */ $estampa = imagecreatefrompng('data/estampa.png');
-/* Copiar parte de una imagen */
-imagecopy($thumb, $estampa, imagesx($thumb) - imagesx($estampa) - 25, imagesy($thumb) - imagesy($estampa) - 25, 0, 0, imagesx($estampa), imagesy($estampa)); }
+         /* Marca de agua */
+         if(isset($_GET["m"])){ $estampa = imagecreatefrompng('data/estampa.png');
+         /* Copiar parte de una imagen */
+         imagecopy($thumb, $estampa, imagesx($thumb) - imagesx($estampa) - 25, imagesy($thumb) - imagesy($estampa) - 25, 0, 0, imagesx($estampa), imagesy($estampa)); }
 
 /* Enviar encabezado */
 header("Content-type: $formato");   /* Exportar la imagen al navegador o a un fichero */
@@ -81,10 +84,12 @@ if($formato == "image/jpg"){          imagejpeg($thumb);
 }elseif($formato == "image/bmp"){     imagebmp($thumb);
 }elseif($formato == "image/jpeg"){    imagejpeg($thumb);
 }else{                                imagejpeg($thumb); }
-imagedestroy($thumb); /* Destruir una imagen */
-}
 
-}
+/* Liberar memoria */
+imagedestroy($thumb); /* Destruir una imagen */
+}//Fin de funcion mostrar
+
+}//Fin de clase imagen
 $imagen = new imagen();
 $imagen -> mostrar();
 ?>
