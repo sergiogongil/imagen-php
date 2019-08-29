@@ -19,6 +19,7 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
   <li>Auto ajuste de proporciones del tama&ntilde;o</li>
   <li>Aplicar filtros de imagen: Escala de grises, Gaussiano, contraste, brillo, negativo, etc.</li>
   <li>Aplicar efectos de imagen: Voltearla verticalmente y horizontalmente.</li>
+  <li>Crear imagen apartir de un texto</li>
 </ul>
 
 <h2>Ejemplos de uso</h2>
