@@ -37,6 +37,9 @@ En algunas ocasiones, nos encontramos con aplicaciones que gestionan sus imágen
 <i>Aplicar efectos de imagen:</i>
 <pre>&lt;img src="img.php?n=imagen.jpg&<b>e=1</b>"&gt;</pre>
 
+<i>Crear imagen apartir de un texto</i>
+<pre>&lt;img src="img.php?<code>n=icrear</code>&x=220&y=55&t=info@guardianweb.es"&gt;</pre>
+
 <i>Con esta lógica y de esta forma tan simple, puedes transformar tus imágenes, aplicarles filtros y otras funciones.</i>
 
 <img src="demo.jpg">
