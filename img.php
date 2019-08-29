@@ -1,24 +1,18 @@
 <?php /* https://github.com/sergiogongil - MIT License - Copyright (c) 2019 SergioGG */
 class imagen {
-   public function __construct(){ //$sitioweb = ""; /* <-- Aquí su sitio Web, ejem: guardianweb.es o localhost*/
-                                                                    /* Definidos un ancho y alto máximos */
+   public function __construct(){                                     /* Definidos un ancho y alto máximos */
           if(isset($_GET["x"]) AND is_numeric($_GET["x"])){ if($_GET["x"]>1280){ $this->ancho = 1280; }else{ $this->ancho = $_GET["x"]; }}else{ $this->ancho = 600; }
           if(isset($_GET["y"]) AND is_numeric($_GET["y"])){ if($_GET["y"]>1024){ $this->altmax = 1024; }else{ $this->altmax = $_GET["y"]; }}else{ $this->altmax = 400; }
           if(isset($_GET["n"])){ $this->nombre = strip_tags($_GET["n"]); }else{ $this->nombre = ""; }
           if(isset($_GET["f"]) AND is_numeric($_GET["f"])){ $this->filtro = $_GET["f"]; }else{ $this->filtro = false; }
           if(isset($_GET["e"]) AND is_numeric($_GET["e"])){ $this->efecto = $_GET["e"]; }else{ $this->efecto = false; }
-          /* Protección Hot-linking */
-          //if(@strpos($sitioweb, $_SERVER['HTTP_HOST']) === false){if($sitioweb==""){}else{$_GET["t"] = "Visite: $sitioweb"; $_GET["m"] = 1; $this->nombre = false;}}
           if(!file_exists($this->nombre)){ if($this->nombre == "icrear"){}else{ $this->nombre = "data/default.jpg"; }}
    }
 
    public function mostrar(){
                   /* Crear una imagen apartir de un texto */
           if($this->nombre == "icrear"){
-          $thumb = imagecreatetruecolor($this->ancho, $this->altmax); $formato = "image/png";
-             //$blanco = imagecolorallocate($thumb, 255, 255, 255);
-//imagecolorallocate($im, 255, 255, 255);
-//$textcolor = imagecolorallocate($im, 0, 0, 255);
+             $thumb = imagecreatetruecolor($this->ancho, $this->altmax); $formato = "image/png";
              imagerectangle($thumb, 4, 4, $this->ancho-4, $this->altmax-4, imagecolorallocate($thumb, 255, 255, 255));
           }else{
           $datos = getimagesize($this->nombre);     /* Obtener el tamaño de una imagen */
