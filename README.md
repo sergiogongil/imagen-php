@@ -40,7 +40,7 @@ Pensado para nuevos desarrolladores o programadores de otros lenguajes, que quie
 <pre>&lt;img src="img.php?n=imagen.jpg&<b>e=1</b>"&gt;</pre>
 
 <i>Crear imagen a partir de un texto</i>
-<pre>&lt;img src="img.php?<code>n=icrear</code>&x=220&y=55&t=info@guardianweb.es"&gt;</pre>
+<pre>&lt;img src="img.php?n=icrear&x=220&y=55&t=info@guardianweb.es"&gt;</pre>
 
 <i>Con esta lógica y de esta forma tan simple, puedes transformar tus imágenes, aplicarles filtros y otras funciones.</i>
 
