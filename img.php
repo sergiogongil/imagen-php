@@ -6,6 +6,7 @@ class imagen {
           if(isset($_GET["f"]) AND is_numeric($_GET["f"])){ $this->filtro = $_GET["f"]; }else{ $this->filtro = false; }
           if(isset($_GET["e"]) AND is_numeric($_GET["e"])){ $this->efecto = $_GET["e"]; }else{ $this->efecto = false; }
           if(isset($_GET["n"])){ $this->nombre = strip_tags($_GET["n"]); }else{ $this->nombre = ""; }
+          if(isset($_GET["t"])){ $this->texto = strip_tags($_GET["t"]); }
           if(!file_exists($this->nombre)){ if($this->nombre == "icrear"){}else{ $this->nombre = "data/default.jpg"; }}
    }
 
@@ -42,6 +43,16 @@ class imagen {
          /* Fondo transparente */                                                                                // 255, 255, 255,
          if($formato == "image/png" OR $formato == "image/gif"){ imagefill($thumb, 0, 0, imagecolorallocatealpha($thumb, 0, 0, 0, 127)); imagealphablending($thumb, false); /**/ imagesavealpha($thumb, true); }
 
+         /* Texto en imagen */
+         $textcolor = imagecolorallocate($thumb, 255, 255, 255); //0xFFBA00
+         if(isset($this->texto)){ imagestring($thumb, 5, 20, 20, $this->texto, $textcolor); }
+
+         /* Marca de agua */
+         if(isset($_GET["m"])){ $estampa = imagecreatefrompng('data/estampa.png');
+         /* Copiar parte de una imagen */
+         imagecopy($thumb, $estampa, imagesx($thumb) - imagesx($estampa) - 25, imagesy($thumb) - imagesy($estampa) - 25, 0, 0, imagesx($estampa), imagesy($estampa)); }
+
+
          /* Filtros de imagen */
          switch ($this->filtro) {
               case 1:  imagefilter($thumb, IMG_FILTER_NEGATE);                     break; /* Invierte todos los colores de la imagen. */
@@ -60,6 +71,7 @@ class imagen {
               default: break;
          }
          
+
          /* Efectos de imagen */
          switch ($this->efecto) {
               case 1:  imageflip($thumb, IMG_FLIP_VERTICAL);                       break; /* Voltearla verticalmente */
@@ -67,14 +79,6 @@ class imagen {
               default: break;
          }
          
-         /* Texto en imagen */
-         $textcolor = imagecolorallocate($thumb, 255, 255, 255); //0xFFBA00
-         if(isset($_GET["t"])){ $t = strip_tags($_GET["t"]); imagestring($thumb, 5, 20, 20, $t, $textcolor); }
-
-         /* Marca de agua */
-         if(isset($_GET["m"])){ $estampa = imagecreatefrompng('data/estampa.png');
-         /* Copiar parte de una imagen */
-         imagecopy($thumb, $estampa, imagesx($thumb) - imagesx($estampa) - 25, imagesy($thumb) - imagesy($estampa) - 25, 0, 0, imagesx($estampa), imagesy($estampa)); }
 
 /* Enviar encabezado */
 header("Content-type: $formato");   /* Exportar la imagen al navegador o a un fichero */
