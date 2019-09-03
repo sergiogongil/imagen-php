@@ -22,7 +22,7 @@ Pensado para nuevos desarrolladores o programadores de otros lenguajes, que quie
   <li>Aplicar filtros de imagen: Escala de grises, Gaussiano, contraste, brillo, negativo, etc.</li>
   <li>Aplicar efectos de imagen: Voltearla verticalmente y horizontalmente.</li>
   <li>Crear imagen a partir de un texto</li>
-  <li>Renerador de código Captcha para integrar en tu Web site</li>
+  <li>Generador de código Captcha para integrar en tu Web site</li>
 </ul>
 
 <h2>Ejemplos de uso</h2>
