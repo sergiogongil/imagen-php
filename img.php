@@ -13,6 +13,7 @@ class imagen {
     return $pattern{rand(0,35)}.$pattern{rand(0,35)}.$pattern{rand(0,35)}.$pattern{rand(0,35)}.$pattern{rand(0,35)};
    }
    public function mostrar(){
+   
                   /* Generar código Captcha */
       if($this->nombre == "captcha"){
          $_SESSION['tmptxt'] = $this->randomText();
@@ -27,6 +28,8 @@ class imagen {
              $thumb = imagecreatetruecolor($this->ancho, $this->altmax); $formato = "image/png";
              imagerectangle($thumb, 4, 4, $this->ancho-4, $this->altmax-4, imagecolorallocate($thumb, 255, 255, 255));  /* Puede suprimir esta linea para mostrar solo el texto. */
           }else{
+          
+             /* Obtenemos datos y formato de la imagen */
           $datos = getimagesize($this->nombre);     /* Obtener el tamaño de una imagen */
           $formato = $datos["mime"];                /* Crea una nueva imagen a partir de un fichero o de una URL */
                 if($formato == "image/jpg"){        $img = imagecreatefromjpeg($this->nombre);
@@ -49,6 +52,7 @@ class imagen {
 
          /* Copia y cambia el tamaño de parte de una imagen redimensionándola */
          imagecopyresampled($thumb, $img, 0, 0, 0, 0, $ancho_final, $alto_final, $datos[0], $datos[1]);
+         
          }//Fin de icrear
 
          /* Fondo transparente */                                                                                // 255, 255, 255,
@@ -63,7 +67,8 @@ class imagen {
          /* Copiar parte de una imagen */
          imagecopy($thumb, $estampa, imagesx($thumb) - imagesx($estampa) - 25, imagesy($thumb) - imagesy($estampa) - 25, 0, 0, imagesx($estampa), imagesy($estampa)); }
 
-
+         }//Fin de no Captcha
+         
          /* Filtros de imagen */
          switch ($this->filtro) {
               case 1:  imagefilter($thumb, IMG_FILTER_NEGATE);                     break; /* Invierte todos los colores de la imagen. */
@@ -90,7 +95,7 @@ class imagen {
               default: break;
          }
 
-        }//Fin de no Captcha
+
 /* Enviar encabezado */
 header("Content-type: $formato");   /* Exportar la imagen al navegador o a un fichero */
 if($formato == "image/jpg"){          imagejpeg($thumb);
