@@ -17,15 +17,15 @@ class imagen {
       if($this->nombre == "captcha"){
          $_SESSION['tmptxt'] = $this->randomText();
          $formato = "image/gif";
-         $thumb = imagecreatefromgif("data/bgcaptcha.gif");
-         $colText = imagecolorallocate($thumb, 0, 0, 0);
+         if(file_exists("data/bgcaptcha.gif")){ $thumb = imagecreatefromgif("data/bgcaptcha.gif"); $colText = imagecolorallocate($thumb, 0, 0, 0);}
+         else{ $thumb = imagecreatetruecolor("80", "30"); $colText = imagecolorallocate($thumb, 255, 255, 255); }
          imagestring($thumb, 5, 16, 7, $_SESSION['tmptxt'], $colText);
       }else{
       
                   /* Crear una imagen apartir de un texto */
           if($this->nombre == "icrear"){
              $thumb = imagecreatetruecolor($this->ancho, $this->altmax); $formato = "image/png";
-             imagerectangle($thumb, 4, 4, $this->ancho-4, $this->altmax-4, imagecolorallocate($thumb, 255, 255, 255));
+             imagerectangle($thumb, 4, 4, $this->ancho-4, $this->altmax-4, imagecolorallocate($thumb, 255, 255, 255));  /* Puede suprimir esta linea para mostrar solo el texto. */
           }else{
           $datos = getimagesize($this->nombre);     /* Obtener el tamaño de una imagen */
           $formato = $datos["mime"];                /* Crea una nueva imagen a partir de un fichero o de una URL */
@@ -54,7 +54,7 @@ class imagen {
          /* Fondo transparente */                                                                                // 255, 255, 255,
          if($formato == "image/png" OR $formato == "image/gif"){ imagefill($thumb, 0, 0, imagecolorallocatealpha($thumb, 0, 0, 0, 127)); imagealphablending($thumb, false); /**/ imagesavealpha($thumb, true); }
 
-         /* Texto en imagen */
+         /* Texto en imagen - Puede cambiar el color del texto aquí 0, 0, 0 */
          $textcolor = imagecolorallocate($thumb, 255, 255, 255); //0xFFBA00
          if(isset($this->texto)){ imagestring($thumb, 5, 20, 20, $this->texto, $textcolor); }
 
