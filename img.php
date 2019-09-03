@@ -9,10 +9,11 @@ class imagen {
           if(isset($_GET["t"])){ $this->texto = strip_tags($_GET["t"]); }
           if(!file_exists($this->nombre)){ if($this->nombre == "icrear" OR $this->nombre == "captcha"){}else{ $this->nombre = "data/default.jpg"; }}
    }
-   public function randomText() { $pattern = "1234567890abcdefghijklmnopqrstuvwxyz";
+   public function randomText() { $pattern = "1234567890abcdefghijklmnopqrstuvwxyz"; /* Se usa para el Captcha */
     return $pattern{rand(0,35)}.$pattern{rand(0,35)}.$pattern{rand(0,35)}.$pattern{rand(0,35)}.$pattern{rand(0,35)};
    }
    public function mostrar(){
+                  /* Generar código Captcha */
       if($this->nombre == "captcha"){
          $_SESSION['tmptxt'] = $this->randomText();
          $formato = "image/gif";
@@ -89,7 +90,7 @@ class imagen {
               default: break;
          }
 
-        }//Fin de no captcha
+        }//Fin de no Captcha
 /* Enviar encabezado */
 header("Content-type: $formato");   /* Exportar la imagen al navegador o a un fichero */
 if($formato == "image/jpg"){          imagejpeg($thumb);
