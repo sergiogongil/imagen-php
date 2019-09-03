@@ -2,7 +2,7 @@
 
 Esta clase ha sido creada para ahorrarle tiempo en sus proyectos o sitios Web y poder hacer uso de un código optimizado para usar en sus imágenes, pudiendo realizar ajustes, aplicar filtros, efectos y otras, sin necesidad de escribir una sola linea de código. 
 
-Únicamente necesitará el fichero <code>img.php</code> para usar en sus proyectos, sin enmarañar sus directorios con excesivos ficheros o directorios que nunca usará o serán innecesarios. Simple, fácil y compatible.
+Únicamente necesitará el fichero <code>img.php</code> para usar en sus proyectos, sin enmarañar sus proyectos con excesivos ficheros o directorios que nunca usará o serán innecesarios. Simple, fácil y compatible.
 
 Haciendo uso de la biblioteca GD integrada que viene por defecto en PHP.
 
