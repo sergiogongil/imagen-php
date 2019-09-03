@@ -7,10 +7,20 @@ class imagen {
           if(isset($_GET["e"]) AND is_numeric($_GET["e"])){ $this->efecto = $_GET["e"]; }else{ $this->efecto = false; }
           if(isset($_GET["n"])){ $this->nombre = strip_tags($_GET["n"]); }else{ $this->nombre = ""; }
           if(isset($_GET["t"])){ $this->texto = strip_tags($_GET["t"]); }
-          if(!file_exists($this->nombre)){ if($this->nombre == "icrear"){}else{ $this->nombre = "data/default.jpg"; }}
+          if(!file_exists($this->nombre)){ if($this->nombre == "icrear" OR $this->nombre == "captcha"){}else{ $this->nombre = "data/default.jpg"; }}
    }
-
+   public function randomText() { $pattern = "1234567890abcdefghijklmnopqrstuvwxyz";
+    return $pattern{rand(0,35)}.$pattern{rand(0,35)}.$pattern{rand(0,35)}.$pattern{rand(0,35)}.$pattern{rand(0,35)};
+   }
    public function mostrar(){
+      if($this->nombre == "captcha"){
+         $_SESSION['tmptxt'] = $this->randomText();
+         $formato = "image/gif";
+         $thumb = imagecreatefromgif("data/bgcaptcha.gif");
+         $colText = imagecolorallocate($thumb, 0, 0, 0);
+         imagestring($thumb, 5, 16, 7, $_SESSION['tmptxt'], $colText);
+      }else{
+      
                   /* Crear una imagen apartir de un texto */
           if($this->nombre == "icrear"){
              $thumb = imagecreatetruecolor($this->ancho, $this->altmax); $formato = "image/png";
@@ -39,7 +49,7 @@ class imagen {
          /* Copia y cambia el tamaño de parte de una imagen redimensionándola */
          imagecopyresampled($thumb, $img, 0, 0, 0, 0, $ancho_final, $alto_final, $datos[0], $datos[1]);
          }//Fin de icrear
-         
+
          /* Fondo transparente */                                                                                // 255, 255, 255,
          if($formato == "image/png" OR $formato == "image/gif"){ imagefill($thumb, 0, 0, imagecolorallocatealpha($thumb, 0, 0, 0, 127)); imagealphablending($thumb, false); /**/ imagesavealpha($thumb, true); }
 
@@ -78,8 +88,8 @@ class imagen {
               case 2:  imageflip($thumb, IMG_FLIP_HORIZONTAL);                     break; /* Voltearla horizontalmente */
               default: break;
          }
-         
 
+        }//Fin de no captcha
 /* Enviar encabezado */
 header("Content-type: $formato");   /* Exportar la imagen al navegador o a un fichero */
 if($formato == "image/jpg"){          imagejpeg($thumb);
