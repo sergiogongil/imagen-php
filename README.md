@@ -2,7 +2,7 @@
 
 Esta clase ha sido creada para ahorrarle tiempo en sus proyectos o sitios Web y poder hacer uso de un código optimizado para usar en sus imágenes, pudiendo realizar ajustes, aplicar filtros, efectos y otras, sin necesidad de escribir una sola linea de código. 
 
-Únicamente necesitará el fichero <code>img.php</code> para usar en sus proyectos, sin enmarañar sus proyectos con excesivos ficheros o directorios que nunca usará o serán innecesarios. Simple, fácil y compatible.
+Únicamente necesitará el fichero <code>img.php</code> para usar en sus proyectos, sin enmarañar sus directorios con excesivos ficheros que nunca usará o serán innecesarios. Simple, fácil y compatible.
 
 Haciendo uso de la biblioteca GD integrada que viene por defecto en PHP.
 
@@ -48,6 +48,8 @@ Pensado para nuevos desarrolladores o programadores de otros lenguajes, que quie
 <pre>&lt;img src="img.php?n=icrear&x=220&y=55&t=info@guardianweb.es"&gt;</pre>
 
 <i>Con esta lógica y de esta forma tan simple, puedes transformar tus imágenes, aplicarles filtros y otras funciones.</i>
+
+<i align="center">Si necesita ayuda o tiene cualquier duda, tambien puedes consultar la documentación disponible en: </i><a href="https://github.com/sergiogongil/imagen-php/wiki">https://github.com/sergiogongil/imagen-php/wiki</a>
 
 <img src="demo.jpg">
 
