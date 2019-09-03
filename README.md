@@ -49,7 +49,7 @@ Pensado para nuevos desarrolladores o programadores de otros lenguajes, que quie
 
 <i>Con esta lógica y de esta forma tan simple, puedes transformar tus imágenes, aplicarles filtros y otras funciones.</i>
 
-<i align="center">Si necesita ayuda o tiene cualquier duda, tambien puedes consultar la documentación disponible en: </i><a href="https://github.com/sergiogongil/imagen-php/wiki">https://github.com/sergiogongil/imagen-php/wiki</a>
+<i>Si necesita ayuda o tiene cualquier duda, también puede consultar la documentación disponible en: </i><a href="https://github.com/sergiogongil/imagen-php/wiki">https://github.com/sergiogongil/imagen-php/wiki</a>
 
 <img src="demo.jpg">
 
