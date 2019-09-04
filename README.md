@@ -27,7 +27,6 @@ Esta clase ha sido creada para ahorrarle tiempo en sus proyectos o sitios Web y 
 
 <i>Para aplicar una marca de agua:</i>
 <pre>&lt;img src="img.php?n=imagen.jpg&<b>m=1</b>"&gt;</pre>
-<img src="img.php?n=demo.jpg&m=1">
 
 <i>Integrar Captcha:</i>
 <pre>&lt;img src="img.php?<b>n=captcha</b>"&gt;</pre>
