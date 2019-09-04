@@ -4,9 +4,7 @@ Esta clase ha sido creada para ahorrarle tiempo en sus proyectos o sitios Web y 
 
 Únicamente necesitará el fichero <code>img.php</code> para usar en sus proyectos, sin enmarañar sus directorios con excesivos ficheros que nunca usará o serán innecesarios. Simple, fácil y compatible.
 
-Haciendo uso de la biblioteca GD integrada que viene por defecto en PHP.
-
-Pensado para nuevos desarrolladores o programadores de otros lenguajes, que quieran hacer uso de esta clase, sin profundizar demasiado en el código.
+Haciendo uso de la biblioteca GD integrada y que viene por defecto en PHP.
 
 <h3 align="center">Puede descargarlo gratis aquí: <a href="https://github.com/sergiogongil/imagen-php.git">GitHub - imagen-php</a></h3>
 
