@@ -15,6 +15,10 @@ class imagen {
           $this->altmax = 400; /* Alto Default */
           
           $this->colorText = array ("255","255","255");
+          
+          $this->background = array ("255","255","255");
+          
+          
                                                                      /* Definidos un ancho y alto máximos */
           if(isset($_GET["x"]) AND is_numeric($_GET["x"])){ if($_GET["x"]>1280){ $this->ancho = 1280; }else{ $this->ancho = $_GET["x"]; }}//else{ $this->ancho = 600; }
           if(isset($_GET["y"]) AND is_numeric($_GET["y"])){ if($_GET["y"]>1024){ $this->altmax = 1024; }else{ $this->altmax = $_GET["y"]; }}//else{ $this->altmax = 400; }
@@ -62,7 +66,7 @@ class imagen {
                   /* Crear una imagen apartir de un texto */
           if($this->nombre == "icrear"){
              $thumb = imagecreatetruecolor($this->ancho, $this->altmax); $formato = "image/png";
-             imagerectangle($thumb, 4, 4, $this->ancho-4, $this->altmax-4, imagecolorallocate($thumb, 255, 255, 255));  /* Puede suprimir esta linea para mostrar solo el texto. */
+             imagerectangle($thumb, 4, 4, $this->ancho-4, $this->altmax-4, imagecolorallocate($thumb, $this->background[0], $this->background[1], $this->background[2]));  /* Puede suprimir esta linea para mostrar solo el texto. */
           }else{
           
              /* Obtenemos datos y formato de la imagen */
@@ -94,7 +98,7 @@ class imagen {
          /* Fondo transparente */                                                                                // 255, 255, 255,
          if($formato == "image/png" OR $formato == "image/gif"){ imagefill($thumb, 0, 0, imagecolorallocatealpha($thumb, 0, 0, 0, 127)); imagealphablending($thumb, false); /**/ imagesavealpha($thumb, true); }
 
-         /* Texto en imagen - Puede cambiar el color del texto aquí 0, 0, 0 */
+         /* Texto en imagen */
          $textcolor = imagecolorallocate($thumb, $this->colorText[0], $this->colorText[1], $this->colorText[2]); //0xFFBA00
          if(isset($this->texto)){ imagestring($thumb, 5, 20, 20, $this->texto, $textcolor); }
 
