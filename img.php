@@ -1,13 +1,49 @@
 <?php /* https://github.com/sergiogongil - MIT License - Copyright (c) 2019 SergioGG */
 class imagen {
-   public function __construct(){                                     /* Definidos un ancho y alto máximos */
-          if(isset($_GET["x"]) AND is_numeric($_GET["x"])){ if($_GET["x"]>1280){ $this->ancho = 1280; }else{ $this->ancho = $_GET["x"]; }}else{ $this->ancho = 600; }
-          if(isset($_GET["y"]) AND is_numeric($_GET["y"])){ if($_GET["y"]>1024){ $this->altmax = 1024; }else{ $this->altmax = $_GET["y"]; }}else{ $this->altmax = 400; }
+   public function __construct(){
+   
+          $this->ruta = "data";
+
+          $this->imgDefault = $this->ruta."/default.jpg";
+
+          $this->estampa = $this->ruta."/estampa.png";
+          
+          $this->bgcaptcha = $this->ruta."/bgcaptcha.gif";
+          
+          $this->ancho = 600; /* Ancho Default */
+          
+          $this->altmax = 400; /* Alto Default */
+          
+          $this->colorText = array ("255","255","255");
+                                                                     /* Definidos un ancho y alto máximos */
+          if(isset($_GET["x"]) AND is_numeric($_GET["x"])){ if($_GET["x"]>1280){ $this->ancho = 1280; }else{ $this->ancho = $_GET["x"]; }}//else{ $this->ancho = 600; }
+          if(isset($_GET["y"]) AND is_numeric($_GET["y"])){ if($_GET["y"]>1024){ $this->altmax = 1024; }else{ $this->altmax = $_GET["y"]; }}//else{ $this->altmax = 400; }
           if(isset($_GET["f"]) AND is_numeric($_GET["f"])){ $this->filtro = $_GET["f"]; }else{ $this->filtro = false; }
           if(isset($_GET["e"]) AND is_numeric($_GET["e"])){ $this->efecto = $_GET["e"]; }else{ $this->efecto = false; }
-          if(isset($_GET["n"])){ $this->nombre = strip_tags($_GET["n"]); }else{ $this->nombre = ""; }
-          if(isset($_GET["t"])){ $this->texto = strip_tags($_GET["t"]); }
-          if(!file_exists($this->nombre)){ if($this->nombre == "icrear" OR $this->nombre == "captcha"){}else{ $this->nombre = "data/default.jpg"; }}
+          //if(isset($_GET["n"])){ $this->nombre = strip_tags($_GET["n"]); }else{ $this->nombre = ""; }
+          //if(isset($_GET["t"])){ $this->texto = strip_tags($_GET["t"]); }
+          //if(!file_exists($this->nombre)){ if($this->nombre == "icrear" OR $this->nombre == "captcha"){}else{ $this->nombre = $this->imgDefault; }}
+          
+          
+          
+          
+          if(isset($_GET["n"])){
+          $this->nombre = strip_tags($_GET["n"]);
+          if($this->nombre == "icrear" OR $this->nombre == "captcha"){}else{
+            $novalido = array(1 => ".php", 2 => ".html", 3 => ".css", 4 => ".txt", 5 => ".dat", 6 => ".js", 7 => ".xml", 8 => "htaccess", 9 => "../../");
+          $pos = strpos($this->nombre, $this->ruta); if ($pos === false){ $this->nombre = $this->imgDefault; }else{
+             if(is_file($this->nombre)){
+             foreach($novalido as $val){ $pos = strpos($this->nombre, $val); if ($pos === false){}else{ $this->nombre = $this->imgDefault; } }
+             }else{$this->nombre = $this->imgDefault;}
+          }
+          }
+          }else{ $this->nombre = ""; }
+          
+         if(isset($_GET["t"])){ $this->texto = strip_tags($_GET["t"]); }elseif($this->nombre == ""){$this->nombre = $this->imgDefault; }
+          
+          
+          
+          
    }
    public function randomText() { $pattern = "1234567890abcdefghijklmnopqrstuvwxyz"; /* Se usa para el Captcha */
     return $pattern{rand(0,35)}.$pattern{rand(0,35)}.$pattern{rand(0,35)}.$pattern{rand(0,35)}.$pattern{rand(0,35)};
@@ -18,7 +54,7 @@ class imagen {
       if($this->nombre == "captcha"){
          $_SESSION['tmptxt'] = $this->randomText();
          $formato = "image/gif";
-         if(file_exists("data/bgcaptcha.gif")){ $thumb = imagecreatefromgif("data/bgcaptcha.gif"); $colText = imagecolorallocate($thumb, 0, 0, 0);}
+         if(file_exists("$this->bgcaptcha")){ $thumb = imagecreatefromgif("$this->bgcaptcha"); $colText = imagecolorallocate($thumb, 0, 0, 0);}
          else{ $thumb = imagecreatetruecolor("80", "30"); $colText = imagecolorallocate($thumb, 255, 255, 255); }
          imagestring($thumb, 5, 16, 7, $_SESSION['tmptxt'], $colText);
       }else{
@@ -59,11 +95,11 @@ class imagen {
          if($formato == "image/png" OR $formato == "image/gif"){ imagefill($thumb, 0, 0, imagecolorallocatealpha($thumb, 0, 0, 0, 127)); imagealphablending($thumb, false); /**/ imagesavealpha($thumb, true); }
 
          /* Texto en imagen - Puede cambiar el color del texto aquí 0, 0, 0 */
-         $textcolor = imagecolorallocate($thumb, 255, 255, 255); //0xFFBA00
+         $textcolor = imagecolorallocate($thumb, $this->colorText[0], $this->colorText[1], $this->colorText[2]); //0xFFBA00
          if(isset($this->texto)){ imagestring($thumb, 5, 20, 20, $this->texto, $textcolor); }
 
          /* Marca de agua */
-         if(isset($_GET["m"])){ $estampa = imagecreatefrompng('data/estampa.png');
+         if(isset($_GET["m"])){ $estampa = imagecreatefrompng("$this->estampa");
          /* Copiar parte de una imagen */
          imagecopy($thumb, $estampa, imagesx($thumb) - imagesx($estampa) - 25, imagesy($thumb) - imagesy($estampa) - 25, 0, 0, imagesx($estampa), imagesy($estampa)); }
 
