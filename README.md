@@ -20,6 +20,8 @@ Esta clase ha sido creada para ahorrarle tiempo en sus proyectos o sitios Web y 
   <li>Aplicar efectos de imagen: Voltearla verticalmente y horizontalmente.</li>
   <li>Crear imagen a partir de un texto</li>
   <li>Generador de código Captcha para integrar en tu Web site</li>
+  <li>Definir variables por defecto en el Constructor</li>
+  <li>Filtro de seguridad para no permitir ficheros que no sean imagenes</li>
 </ul>
 
 <h2>Ejemplos de uso</h2>
