@@ -26,7 +26,6 @@ class ImageHandler {
     private int|false $efecto = false;
 
     public function __construct() {
-        // Validación estricta y sanitización de parámetros GET
         $this->ancho = filter_input(INPUT_GET, 'x', FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 1280]]) ?: 600;
         $this->altmax = filter_input(INPUT_GET, 'y', FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 1024]]) ?: 400;
         
@@ -44,11 +43,8 @@ class ImageHandler {
             return;
         }
 
-        // Seguridad: Evitar Directory Traversal usando basename
-        // Solo permitimos archivos que realmente existan dentro de la carpeta $ruta
         if ($rawNombre) {
             $safeName = basename($rawNombre);
-            // Comprobamos si el path original incluía la ruta, para mantener compatibilidad
             $rutaCompleta = str_starts_with($rawNombre, $this->ruta . '/') ? $rawNombre : $this->ruta . '/' . $safeName;
             
             if (is_file($rutaCompleta)) {
@@ -62,7 +58,6 @@ class ImageHandler {
     private function randomText(): string {
         $pattern = "1234567890abcdefghijklmnopqrstuvwxyz";
         $text = '';
-        // PHP 8+: Uso de corchetes en lugar de llaves para acceder a strings
         for ($i = 0; $i < 5; $i++) {
             $text .= $pattern[rand(0, strlen($pattern) - 1)];
         }
@@ -98,11 +93,17 @@ class ImageHandler {
                 $formato = $datos['mime'];
                 
                 $img = match ($formato) {
-                    'image/png' => imagecreatefrompng($this->nombre),
-                    'image/gif' => imagecreatefromgif($this->nombre),
-                    'image/bmp' => imagecreatefrombmp($this->nombre),
-                    default => imagecreatefromjpeg($this->nombre),
+                    'image/png' => @imagecreatefrompng($this->nombre),
+                    'image/gif' => @imagecreatefromgif($this->nombre),
+                    'image/bmp' => @imagecreatefrombmp($this->nombre),
+                    default => @imagecreatefromjpeg($this->nombre),
                 };
+
+                // Seguridad extra: Si la imagen original no se pudo procesar, abortamos
+                if ($img === false) {
+                    http_response_code(500);
+                    exit;
+                }
 
                 $ancho_orig = $datos[0];
                 $alto_orig = $datos[1];
@@ -138,10 +139,17 @@ class ImageHandler {
                 imagestring($thumb, 5, 20, 20, $this->texto, $textcolor);
             }
 
-            if (isset($_GET["m"]) && file_exists($this->estampa)) {
-                $estampa = imagecreatefrompng($this->estampa);
-                imagecopy($thumb, $estampa, imagesx($thumb) - imagesx($estampa) - 25, imagesy($thumb) - imagesy($estampa) - 25, 0, 0, imagesx($estampa), imagesy($estampa));
-                imagedestroy($estampa);
+            // CORRECCIÓN MARCA DE AGUA
+            if (isset($_GET["m"])) {
+                $estampa = @imagecreatefrompng($this->estampa);
+                // PHP 8: Evitar Error Fatal asegurando que la estampa se cargó (no es false)
+                if ($estampa !== false) {
+                    imagealphablending($thumb, true); // Forzar fusión de la transparencia
+                    $m_x = imagesx($thumb) - imagesx($estampa) - 25;
+                    $m_y = imagesy($thumb) - imagesy($estampa) - 25;
+                    imagecopy($thumb, $estampa, $m_x, $m_y, 0, 0, imagesx($estampa), imagesy($estampa));
+                    imagedestroy($estampa);
+                }
             }
         }
 
